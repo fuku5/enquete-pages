@@ -108,6 +108,7 @@ function nextButtonAction()  {
 		frame_count = 0;	
 		answer_fields[episode_index].value = answer.join(",");
 		answer = [];
+    slider.value = 50;
 	}
 	if (episode_count == episode_name.length) {
 		endEvent();
