@@ -38,31 +38,60 @@ form.id = "mG61Hd";
 //var form = document.forms[0];
   //document.getElementById("mG61Hd");
 
+// hidden inputs
 // order
-var node = document.createElement("input");
-node.setAttribute("type", "hidden");
-node.name = input_names[2];
-node.value = shuffled_episode.join(",");
-form.appendChild(node);
-	
+var order_field = document.createElement("input");
+order_field.setAttribute("type", "hidden");
+order_field.name = input_names[2];
+order_field.value = shuffled_episode.join(",");
+form.appendChild(order_field);
+
+// answers
+var answer_fields = [];
+//for (var i in episode_name) {
+for (var i = 0; i < 8; i++) {
+	var field = document.createElement("input");
+	field.setAttribute("type", "hidden");
+	field.name = input_names[i+3];
+	field.value = "null";
+	form.appendChild(field);
+	answer_fields.push(field);
+}
+  
+// for debug	
 var my_console = document.createTextNode("test");
 
 var episode_count = 0;
 var frame_count = 0;
+var answer = [];
 function nextButtonAction()  {
 	var image = document.getElementById("image");
 	var episode_id = shuffled_episode[episode_count];
-	var max_frame = len_frame[episode_name.indexOf(episode_id)];
-	image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
+	var episode_index = episode_name.indexOf(episode_id);
+	var max_frame = len_frame[episode_index];
+	//image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
 	my_console.data = "shuffled: ";
 	my_console.data += shuffled_episode;
 	my_console.data += "id now";
-	my_console.data += epidode_id;
+	my_console.data += episode_id;
 	my_console.data += "frame now";
 	my_console.data += frame_count;
 	my_console.data += "frame max";
 	my_console.data += max_frame;
-	frame_counter += 1;
+	frame_count += 1;
+	answer.push(episode_id);
+	if (frame_count > max_frame) {
+		episode_count += 1;
+		frame_count = 0;	
+		answer_fields[episode_index].value = answer.join(",");
+		answer = [];
+	}
+	if (episode_count == episode_name.length) {
+		endEvent();
+	}
+}
+function endEvent() {
+	form.submit();
 }
 
 $(function(){
