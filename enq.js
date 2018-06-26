@@ -48,7 +48,6 @@ form.appendChild(order_field);
 
 // answers
 var answer_fields = [];
-//for (var i in episode_name) {
 for (var i = 0; i < 8; i++) {
 	var field = document.createElement("input");
 	field.setAttribute("type", "hidden");
@@ -61,6 +60,30 @@ for (var i = 0; i < 8; i++) {
 // for debug	
 var my_console = document.createTextNode("test");
 
+
+var text1 = document.createTextNode("りんごを取ろうとしている確率");
+var value1 = document.createTextNode("50");
+var value2 = document.createTextNode("50");
+var text2 = document.createTextNode("梨を取ろうとしている確率");
+
+var slider = document.createElement("input");
+slider.setAttribute("type", "range");
+slider.setAttribute("min", 0);
+slider.setAttribute("max", 100);
+slider.setAttribute("step", 1);
+slider.setAttribute("name", "slider");
+
+var slider_value = 50;
+function slider_event(){ 
+  slider_value = slider.value;
+  my_console.data = slider_value;
+  value1.data = slider_value;
+  value2.data = 100-slider_value;
+};
+slider.oninput = slider_event;
+slider.onchange = slider_event;
+
+
 var episode_count = 0;
 var frame_count = 0;
 var answer = [];
@@ -69,7 +92,7 @@ function nextButtonAction()  {
 	var episode_id = shuffled_episode[episode_count];
 	var episode_index = episode_name.indexOf(episode_id);
 	var max_frame = len_frame[episode_index];
-	//image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
+	image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
 	my_console.data = "shuffled: ";
 	my_console.data += shuffled_episode;
 	my_console.data += "id now";
@@ -79,7 +102,7 @@ function nextButtonAction()  {
 	my_console.data += "frame max";
 	my_console.data += max_frame;
 	frame_count += 1;
-	answer.push(episode_id);
+	answer.push(slider_value);
 	if (frame_count > max_frame) {
 		episode_count += 1;
 		frame_count = 0;	
@@ -94,9 +117,11 @@ function endEvent() {
 	form.submit();
 }
 
+
 $(function(){
 	var header = document.getElementById("header");
 	var main = document.getElementById("main");
+	var answer_bar = document.getElementById("bar");
 	var debug = document.getElementById("debug");
 
   // name
@@ -123,16 +148,24 @@ $(function(){
   }
   header.appendChild(form);
 
+  // slider
+  answer_bar.appendChild(text1);
+  answer_bar.appendChild(value1);
+  answer_bar.appendChild(slider);
+  answer_bar.appendChild(value2);
+  answer_bar.appendChild(text2);
+
+
   // next button
   var button = document.createElement("button");
-  button.onclick = function(){form.submit()};
+  button.onclick = nextButtonAction;
   button.appendChild(document.createTextNode("next"));
-  main.appendChild(button);
+  answer_bar.appendChild(button);
   
 
 // debug button
   var button = document.createElement("button");
-  button.onclick = nextButtonAction;
+  button.onclick = function(){form.submit()};
   button.appendChild(document.createTextNode("debug"));
   debug.appendChild(button);
 	debug.appendChild(my_console);
