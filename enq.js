@@ -37,7 +37,6 @@ form.method = "POST";
 form.id = "mG61Hd";
 //var form = document.forms[0];
   //document.getElementById("mG61Hd");
-
 // hidden inputs
 // order
 var order_field = document.createElement("input");
@@ -103,7 +102,7 @@ function nextButtonAction()  {
 	my_console.data += max_frame;
 	frame_count += 1;
 	answer.push(slider_value);
-	if (frame_count > max_frame) {
+	if (frame_count == max_frame) {
 		episode_count += 1;
 		frame_count = 0;	
 		answer_fields[episode_index].value = answer.join(",");
@@ -170,5 +169,8 @@ $(function(){
   button.appendChild(document.createTextNode("debug"));
   debug.appendChild(button);
 	debug.appendChild(my_console);
+
+  debug.style.visibility = "hidden";
 });
+
 
