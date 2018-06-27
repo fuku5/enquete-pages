@@ -7,6 +7,7 @@
 ![エージェント](img/agent.png)
   - 白い枠にはカメラがついていて、そこから周囲を観測しています。
   - エージェントの視界は、こんな感じです。
+  
 |<img src="imgs/first-person.png">|<img src="imgs/eyesight.png">|
 |---|---|
 
