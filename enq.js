@@ -83,7 +83,7 @@ slider.onchange = slider_event;
 
 
 var episode_count = 0;
-var frame_count = -1; 
+var frame_count = 0; 
 var answer = [];
 function nextButtonAction()  {
   if (frame_count < 0) { // first only
@@ -108,8 +108,13 @@ function nextButtonAction()  {
 
   my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
 	
+  if (frame_count == 0 && episode_count == 0) {
+    ;
+  } else {
+    answer.push(slider_value);
+  }
   frame_count += 1;
-	if (frame_count == max_frame) { // end of the episode
+	if (frame_count > max_frame) { // end of the episode
 		episode_count += 1;
 		frame_count = 0;	
 		answer_fields[episode_index].value = answer.join(",");
