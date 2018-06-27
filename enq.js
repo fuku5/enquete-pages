@@ -176,6 +176,10 @@ $(function(){
   answer_bar.appendChild(value2);
   answer_bar.appendChild(text2);
 
+
+
+  button_description = document.createTextNode("スライダーをいじるボタン→");
+  answer_bar2.append(button_description);
   var button = document.createElement("button");
   button.innerText = "<-5";
   button.onclick = function(){
