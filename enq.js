@@ -83,18 +83,24 @@ slider.onchange = slider_event;
 
 
 var episode_count = 0;
-var frame_count = 0;
+var frame_count = -1; 
 var answer = [];
 function nextButtonAction()  {
-	if (frame_count == max_frame) {
+  if (frame_count < 0) { // first only
+    frame_count = 0;
+  } else {
+    answer.push(slider_value);
+  }
+	if (frame_count == max_frame) { // end of the episode
 		episode_count += 1;
 		frame_count = 0;	
 		answer_fields[episode_index].value = answer.join(",");
 		answer = [];
     slider.value = 50;
 	}
-	if (episode_count == episode_name.length) {
+	if (episode_count == episode_name.length) { // end of the experiment
 		endEvent();
+    return
 	}
 
 	var episode_id = shuffled_episode[episode_count];
@@ -110,9 +116,11 @@ function nextButtonAction()  {
   next_button.innerText = "loading";
   next_button.disabled = "true";
 	image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
+
+  my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
 	
-	frame_count += 1;
-	answer.push(slider_value);
+  frame_count += 1;
+
 }
 function endEvent() {
 	form.submit();
@@ -172,7 +180,7 @@ $(function(){
   debug.appendChild(button);
 	debug.appendChild(my_console);
 
-  debug.style.visibility = "hidden";
+  //debug.style.visibility = "hidden";
 });
 
 
