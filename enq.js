@@ -119,10 +119,15 @@ function nextButtonAction()  {
     next_button = document.getElementById("next_button");
     next_button.innerText = "next";
     next_button.disabled = "";
+    next_button.onclick = nextButtonAction;
   } 
-  next_button.innerText = "loading";
-  next_button.disabled = "true";
-	image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
+  next_button.innerText = "reload";
+  //next_button.disabled = "true";
+  function load_img() {
+    image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png?time=" + new Date().getTime());
+  }
+	next_button.onclick = load_img()
+  load_img()
 
   my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
 	
@@ -179,7 +184,7 @@ $(function(){
   answer_bar.appendChild(button);
   
 
-// debug button
+  // debug button
   var button = document.createElement("button");
   button.onclick = function(){form.submit()};
   button.appendChild(document.createTextNode("ver4"));
