@@ -187,7 +187,7 @@ $(function(){
   debug.appendChild(button);
 	debug.appendChild(my_console);
 
-  //debug.style.visibility = "hidden";
+  debug.style.visibility = "hidden";
 });
 
 
