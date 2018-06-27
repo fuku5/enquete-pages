@@ -1,7 +1,3 @@
-var episode_name = [1,3,4,5,6,7,8,9];
-var len_frame = [20, 17, 34, 24, 60, 47, 17, 14];
-var shuffled_episode = episode_name.concat();
-
 function shuffle(array) {
   var n = array.length, t, i;
 
@@ -15,6 +11,7 @@ function shuffle(array) {
   return array;
 }
 
+var shuffled_episode = episode_name.concat();
 shuffled_episode = shuffle(shuffled_episode);
 var input_names = [ "entry.1494962771",  // name
           "entry.183576483",   // gender
@@ -132,7 +129,12 @@ function nextButtonAction()  {
 
 }
 function endEvent() {
-	form.submit();
+  if (test){
+    alert("おわり");
+    window.location.href = "https://fuku5.github.io/enquete-pages/";
+  } else {
+    form.submit();
+  }
 }
 
 
