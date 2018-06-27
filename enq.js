@@ -140,6 +140,7 @@ $(function(){
 	var header = document.getElementById("header");
 	var main = document.getElementById("main");
 	var answer_bar = document.getElementById("bar");
+	var answer_bar2 = document.getElementById("bar2");
 	var debug = document.getElementById("debug");
 
   // name
@@ -172,6 +173,35 @@ $(function(){
   answer_bar.appendChild(slider);
   answer_bar.appendChild(value2);
   answer_bar.appendChild(text2);
+
+  var button = document.createElement("button");
+  button.innerText = "<-5";
+  button.onclick = function(){
+    slider.value -= 5;
+    slider_event();
+  };
+  answer_bar2.appendChild(button);
+  var button = document.createElement("button");
+  button.innerText = "<-1";
+  button.onclick = function(){
+    slider.value -= 1;
+    slider_event();
+  };
+  answer_bar2.appendChild(button);
+  var button = document.createElement("button");
+  button.innerText = "1->";
+  button.onclick = function(){
+    slider.value -= -1;
+    slider_event();
+  };
+  answer_bar2.appendChild(button);
+  var button = document.createElement("button");
+  button.innerText = "5->";
+  button.onclick = function(){
+    slider.value -= -5;
+    slider_event();
+  };
+  answer_bar2.appendChild(button);
 
 
   // next button
