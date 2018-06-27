@@ -91,17 +91,6 @@ function nextButtonAction()  {
   } else {
     answer.push(slider_value);
   }
-	if (frame_count == max_frame) { // end of the episode
-		episode_count += 1;
-		frame_count = 0;	
-		answer_fields[episode_index].value = answer.join(",");
-		answer = [];
-    slider.value = 50;
-	}
-	if (episode_count == episode_name.length) { // end of the experiment
-		endEvent();
-    return
-	}
 
 	var episode_id = shuffled_episode[episode_count];
 	var episode_index = episode_name.indexOf(episode_id);
@@ -120,6 +109,17 @@ function nextButtonAction()  {
   my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
 	
   frame_count += 1;
+	if (frame_count == max_frame) { // end of the episode
+		episode_count += 1;
+		frame_count = 0;	
+		answer_fields[episode_index].value = answer.join(",");
+		answer = [];
+    slider.value = 50;
+	}
+	if (episode_count == episode_name.length) { // end of the experiment
+		endEvent();
+    return
+	}
 
 }
 function endEvent() {
