@@ -73,7 +73,6 @@ slider.setAttribute("name", "slider");
 
 function slider_event(){ 
   value = slider.value;
-  my_console.data = value;
   value1.data = ("000" + (100-value)).slice(-3) + "%";
   value2.data = ("000" + value).slice(-3) + "%";
 };
@@ -90,7 +89,7 @@ function nextButtonAction()  {
 	var max_frame = len_frame[episode_index];
   
   if (frame_count < 0 ) {
-    ;
+    my_console.value = "new episode";
   } else {
     answer.push(slider.value);
   }
@@ -104,6 +103,7 @@ function nextButtonAction()  {
     slider.value = 50;
     value1.data = "050%";
     value2.data = "050%";
+    my_console.value = "new episode";
     
     episode_id = shuffled_episode[episode_count];
     episode_index = episode_name.indexOf(episode_id);
@@ -128,9 +128,6 @@ function nextButtonAction()  {
   }
 	next_button.onclick = load_img()
   load_img()
-
-  my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
-	
 
 }
 function endEvent() {
@@ -185,13 +182,13 @@ $(function(){
   
 
   // debug button
-  var button = document.createElement("button");
-  button.onclick = function(){form.submit()};
-  button.appendChild(document.createTextNode("ver4"));
-  debug.appendChild(button);
+  //var button = document.createElement("button");
+  //button.onclick = function(){form.submit()};
+  //button.appendChild(document.createTextNode("ver4"));
+  //debug.appendChild(button);
 	debug.appendChild(my_console);
 
-  debug.style.visibility = "hidden";
+  //debug.style.visibility = "hidden";
 });
 
 
