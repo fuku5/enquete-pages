@@ -75,8 +75,8 @@ var slider_value = 50;
 function slider_event(){ 
   slider_value = slider.value;
   my_console.data = slider_value;
-  value1.data = ("000" + slider_value).slice(-3) + "%";
-  value2.data = ("000" + (100-slider_value)).slice(-3) + "%";
+  value1.data = ("000" + (100-slider_value)).slice(-3) + "%";
+  value2.data = ("000" + slider_value).slice(-3) + "%";
 };
 slider.oninput = slider_event;
 slider.onchange = slider_event;
