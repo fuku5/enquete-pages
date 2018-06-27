@@ -6,17 +6,16 @@
 ![環境全体](imgs/whole.png)
 
 - エージェントは、白い枠に黒い点が二つ付いている方が前です。
-<img src="imgs/agent.png" width="45%">
+ <img src="imgs/agent.png" width="45%">
   - 白い枠にはカメラがついていて、そこから周囲を観測しています。
   - エージェントの視界は、こんな感じです。
   
-<img src="imgs/eyesight.png" width="45%">
-
+  <img src="imgs/eyesight.png" width="45%">
 
 - あなたは下図のように、ある場所から見えるエージェントの動きを、コマ送りで見ていると思ってください。
   - (一番上の画像に比べてあなたの視界が狭いことがわかると思います。)
   
-<img src="imgs/human-perspective.png" width="45%">
+ <img src="imgs/human-perspective.png" width="45%">
 
 - エージェントはりんごか梨のどちらかを取ろうとして動いています。
   - ただし、エージェントは最初りんごと梨がどこにあるか知りません。
