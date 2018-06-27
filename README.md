@@ -4,16 +4,16 @@
 - 環境にはつねに、りんご2つ、梨2つとエージェントが存在します。
 ![環境全体](imgs/whole.png)
 - エージェントは、白い枠に黒い点が二つ付いている方が前です。
-![エージェント](imgs/agent.png)
+<img src="imgs/agent.png" width="45%">
   - 白い枠にはカメラがついていて、そこから周囲を観測しています。
   - エージェントの視界は、こんな感じです。
   
-|<img src="imgs/first-person.png">|<img src="imgs/eyesight.png">|
-|---|---|
+<img src="imgs/first-person.png" width="45%"> <img src="imgs/eyesight.png" width="45%">
+
 
 - あなたは下図のように、ある場所から見えるエージェントの動きを、コマ送りで見ていると思ってください。
   - (一番上の画像に比べて視界が狭いことがわかると思います。)
-![あなたの視界](imgs/human-perspective.png)
+<img src="imgs/human-perspective.png" width="45%">
 - エージェントはりんごか梨のどちらかを取ろうとして動いています。
   - ただし、エージェントは最初りんごと梨がどこにあるか知りません。
 - あなたには、自分の視界からエージェントの動きを見て、エージェントがりんごと梨のどちらを取ろうとしているか想像し、確率で答えてもらいます。
