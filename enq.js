@@ -120,8 +120,8 @@ function nextButtonAction()  {
 		answer_fields[episode_index].value = answer.join(",");
 		answer = [];
     slider.value = 50;
-    value1.data = "050%;
-    value2.data = "050%;
+    value1.data = "050%";
+    value2.data = "050%";
 	}
 	if (episode_count == episode_name.length) { // end of the experiment
 		endEvent();
@@ -183,7 +183,7 @@ $(function(){
 // debug button
   var button = document.createElement("button");
   button.onclick = function(){form.submit()};
-  //button.appendChild(document.createTextNode("debug"));
+  button.appendChild(document.createTextNode("ver4"));
   debug.appendChild(button);
 	debug.appendChild(my_console);
 
