@@ -8,7 +8,7 @@
   - 白い枠にはカメラがついていて、そこから周囲を観測しています。
   - エージェントの視界は、こんな感じです。
   
-<img src="imgs/first-person.png" width="45%"> <img src="imgs/eyesight.png" width="45%">
+<img src="imgs/eyesight.png" width="45%">
 
 
 - あなたは下図のように、ある場所から見えるエージェントの動きを、コマ送りで見ていると思ってください。
