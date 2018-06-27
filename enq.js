@@ -60,10 +60,10 @@ for (var i = 0; i < 8; i++) {
 var my_console = document.createTextNode("test");
 
 
-var text1 = document.createTextNode("りんごを取ろうとしている確率");
-var value1 = document.createTextNode("50");
-var value2 = document.createTextNode("50");
-var text2 = document.createTextNode("梨を取ろうとしている確率");
+var text1 = document.createTextNode("梨を取ろうとしている確率");
+var value1 = document.createTextNode("050%");
+var value2 = document.createTextNode("050%");
+var text2 = document.createTextNode("りんごを取ろうとしている確率");
 value1.setAttribute =("style", "width:100px;");
 value2.setAttribute =("style", "width:20pxl");
 
@@ -78,8 +78,8 @@ var slider_value = 50;
 function slider_event(){ 
   slider_value = slider.value;
   my_console.data = slider_value;
-  value1.data = slider_value;
-  value2.data = 100-slider_value;
+  value1.data = ("000" + slider_value).slice(-3) + "%";
+  value2.data = ("000" + (100-slider_value)).slice(-3) + "%";
 };
 slider.oninput = slider_event;
 slider.onchange = slider_event;
@@ -100,19 +100,20 @@ function nextButtonAction()  {
 		endEvent();
 	}
 
-	var image = document.getElementById("image");
 	var episode_id = shuffled_episode[episode_count];
 	var episode_index = episode_name.indexOf(episode_id);
 	var max_frame = len_frame[episode_index];
+  
+	var image = document.getElementById("image");
+  image.onload = function() {
+    next_button = document.getElementById("next_button");
+    next_button.innerText = "next";
+    next_button.disabled = "";
+  } 
+  next_button.innerText = "loading";
+  next_button.disabled = "true";
 	image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png");
-	my_console.data = "shuffled: ";
-	my_console.data += shuffled_episode;
-	my_console.data += "id now";
-	my_console.data += episode_id;
-	my_console.data += "frame now";
-	my_console.data += frame_count;
-	my_console.data += "frame max";
-	my_console.data += max_frame;
+	
 	frame_count += 1;
 	answer.push(slider_value);
 }
@@ -162,14 +163,16 @@ $(function(){
   // next button
   var button = document.createElement("button");
   button.onclick = nextButtonAction;
-  button.appendChild(document.createTextNode("next"));
+  button.id = "next_button";
+  button.innerText = "next";
+  //button.appendChild(document.createTextNode("next"));
   answer_bar.appendChild(button);
   
 
 // debug button
   var button = document.createElement("button");
   button.onclick = function(){form.submit()};
-  button.appendChild(document.createTextNode("debug"));
+  //button.appendChild(document.createTextNode("debug"));
   debug.appendChild(button);
 	debug.appendChild(my_console);
 
