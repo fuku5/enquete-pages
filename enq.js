@@ -83,18 +83,37 @@ slider.onchange = slider_event;
 
 
 var episode_count = 0;
-var frame_count = 0; 
+var frame_count = -1; 
 var answer = [];
 function nextButtonAction()  {
-  if (frame_count < 0) { // first only
-    frame_count = 0;
-  } else {
-    answer.push(slider_value);
-  }
-
 	var episode_id = shuffled_episode[episode_count];
 	var episode_index = episode_name.indexOf(episode_id);
 	var max_frame = len_frame[episode_index];
+  
+  if (frame_count < 0 ) {
+    ;
+  } else {
+    answer.push(slider_value);
+  }
+  frame_count += 1;
+
+	if (frame_count == max_frame) { // end of the episode
+		episode_count += 1;
+		frame_count = 0;	
+		answer_fields[episode_index].value = answer.join(",");
+		answer = [];
+    slider.value = 50;
+    value1.data = "050%";
+    value2.data = "050%";
+    
+    episode_id = shuffled_episode[episode_count];
+    episode_index = episode_name.indexOf(episode_id);
+    max_frame = len_frame[episode_index];
+	}
+	if (episode_count == episode_name.length) { // end of the experiment
+		endEvent();
+    return
+	}
   
 	var image = document.getElementById("image");
   image.onload = function() {
@@ -108,25 +127,6 @@ function nextButtonAction()  {
 
   my_console.data = "imgs/"+episode_id+"/D"+frame_count+".png";
 	
-  if (frame_count == 0 && episode_count == 0) {
-    ;
-  } else {
-    answer.push(slider_value);
-  }
-  frame_count += 1;
-	if (frame_count == max_frame) { // end of the episode
-		episode_count += 1;
-		frame_count = 0;	
-		answer_fields[episode_index].value = answer.join(",");
-		answer = [];
-    slider.value = 50;
-    value1.data = "050%";
-    value2.data = "050%";
-	}
-	if (episode_count == episode_name.length) { // end of the experiment
-		endEvent();
-    return
-	}
 
 }
 function endEvent() {
