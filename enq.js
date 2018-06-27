@@ -35,8 +35,7 @@ form.action = "https://docs.google.com/forms/d/e/1FAIpQLScNfIQobc4VZAqfbxBIGtu-I
 form.target = "_self";
 form.method = "POST";
 form.id = "mG61Hd";
-//var form = document.forms[0];
-  //document.getElementById("mG61Hd");
+
 // hidden inputs
 // order
 var order_field = document.createElement("input");
@@ -60,12 +59,10 @@ for (var i = 0; i < 8; i++) {
 var my_console = document.createTextNode("test");
 
 
-var text1 = document.createTextNode("梨を取ろうとしている確率");
+var text1 = document.createTextNode("りんごを取ろうとしている確率");
 var value1 = document.createTextNode("050%");
 var value2 = document.createTextNode("050%");
-var text2 = document.createTextNode("りんごを取ろうとしている確率");
-value1.setAttribute =("style", "width:100px;");
-value2.setAttribute =("style", "width:20pxl");
+var text2 = document.createTextNode("梨を取ろうとしている確率");
 
 var slider = document.createElement("input");
 slider.setAttribute("type", "range");
@@ -165,7 +162,6 @@ $(function(){
   button.onclick = nextButtonAction;
   button.id = "next_button";
   button.innerText = "next";
-  //button.appendChild(document.createTextNode("next"));
   answer_bar.appendChild(button);
   
 
