@@ -114,7 +114,7 @@ function nextButtonAction()  {
     answer.push(slider_value);
   }
   frame_count += 1;
-	if (frame_count > max_frame) { // end of the episode
+	if (frame_count == max_frame) { // end of the episode
 		episode_count += 1;
 		frame_count = 0;	
 		answer_fields[episode_index].value = answer.join(",");
