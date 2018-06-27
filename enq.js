@@ -120,6 +120,8 @@ function nextButtonAction()  {
 		answer_fields[episode_index].value = answer.join(",");
 		answer = [];
     slider.value = 50;
+    value1.data = "050%;
+    value2.data = "050%;
 	}
 	if (episode_count == episode_name.length) { // end of the experiment
 		endEvent();
