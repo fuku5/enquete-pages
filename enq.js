@@ -56,7 +56,7 @@ for (var i = 0; i < 8; i++) {
 }
   
 // for debug	
-var my_console = document.createTextNode("test");
+var my_console = document.createTextNode("");
 
 
 var text1 = document.createTextNode("りんごを取ろうとしている確率");
@@ -84,12 +84,14 @@ var episode_count = 0;
 var frame_count = -1; 
 var answer = [];
 function nextButtonAction()  {
+  my_console.data = "";
+
 	var episode_id = shuffled_episode[episode_count];
 	var episode_index = episode_name.indexOf(episode_id);
 	var max_frame = len_frame[episode_index];
   
   if (frame_count < 0 ) {
-    my_console.value = "new episode";
+    my_console.data = "new episode";
   } else {
     answer.push(slider.value);
   }
@@ -103,7 +105,7 @@ function nextButtonAction()  {
     slider.value = 50;
     value1.data = "050%";
     value2.data = "050%";
-    my_console.value = "new episode";
+    my_console.data = "new episode";
     
     episode_id = shuffled_episode[episode_count];
     episode_index = episode_name.indexOf(episode_id);
@@ -122,7 +124,6 @@ function nextButtonAction()  {
     next_button.onclick = nextButtonAction;
   } 
   next_button.innerText = "reload";
-  //next_button.disabled = "true";
   function load_img() {
     image.setAttribute("src", "imgs/"+episode_id+"/D"+frame_count+".png?time=" + new Date().getTime());
   }
