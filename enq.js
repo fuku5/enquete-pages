@@ -137,7 +137,7 @@ function endEvent() {
   }
 }
 
-function function getUrlVars() {
+function getUrlVars() {
   var vars = [], max = 0, hash = "", array = "";
   var url = window.location.search;
 
