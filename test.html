@@ -5,23 +5,6 @@
 		<title>enquete</title>
 		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="const_test.js">
-			var val = getUrlVars();
-			episode_name = [val["epi"]];
-			
-			function function getUrlVars() {
-				var vars = [], max = 0, hash = "", array = "";
-				var url = window.location.search;
-
-				hash  = url.slice(1).split('&');    
-				max = hash.length;
-				for (var i = 0; i < max; i++) {
-					array = hash[i].split('=');    //keyと値に分割。
-					vars.push(array[0]);    //末尾にクエリ文字列のkeyを挿入。
-					vars[array[0]] = array[1];    //先ほど確保したkeyに、値を代入。
-				}
-
-				return vars;
-			}
 		</script>
 		<script type="text/javascript" src="enq.js"></script>
 	</head>
