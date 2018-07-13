@@ -11,6 +11,11 @@ function shuffle(array) {
   return array;
 }
 
+var url_var = getUrlVars();
+if (url_var["epi"]) {
+  episode_name = [url_var["epi"]];
+}
+
 var shuffled_episode = episode_name.concat();
 shuffled_episode = shuffle(shuffled_episode);
 var input_names = [ "entry.1494962771",  // name
@@ -154,10 +159,6 @@ function getUrlVars() {
 
 
 $(function(){
-  var url_var = getUrlVars();
-  if (url_var["epi"]) {
-    episode_name = [url_var["epi"]];
-  }
 
 	var header = document.getElementById("header");
 	var main = document.getElementById("main");
