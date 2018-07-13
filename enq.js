@@ -137,7 +137,7 @@ function endEvent() {
   }
 }
 
-function function getUrlVars() {
+function getUrlVars() {
   var vars = [], max = 0, hash = "", array = "";
   var url = window.location.search;
 
@@ -154,9 +154,9 @@ function function getUrlVars() {
 
 
 $(function(){
-  var val = getUrlVars();
-  if (val["epi"]) {
-    episode_name = [val["epi"]];
+  var url_var = getUrlVars();
+  if (url_var["epi"]) {
+    episode_name = [url_var["epi"]];
   }
 
 	var header = document.getElementById("header");
@@ -244,6 +244,7 @@ $(function(){
   //button.appendChild(document.createTextNode("ver4"));
   //debug.appendChild(button);
 	debug.appendChild(my_console);
+  my_console.data = url_var;
 
   //debug.style.visibility = "hidden";
 });
