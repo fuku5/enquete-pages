@@ -245,7 +245,6 @@ $(function(){
   //button.appendChild(document.createTextNode("ver4"));
   //debug.appendChild(button);
 	debug.appendChild(my_console);
-  my_console.data = url_var;
 
   //debug.style.visibility = "hidden";
 });
